@@ -1464,3 +1464,9 @@ func (opts *Options) Destroy() {
 	opts.env = nil
 	opts.bbto = nil
 }
+
+// SetRowCache set a global cache for table-level rows.
+// Default: nil (disabled)
+func (opts *Options) SetRowCache(cache *Cache) {
+	C.rocksdb_options_set_row_cache(opts.c, cache.c)
+}
